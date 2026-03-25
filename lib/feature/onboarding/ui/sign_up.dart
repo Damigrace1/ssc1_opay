@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
+import 'package:my_first_app/feature/home/ui/dash_board.dart';
 import 'package:my_first_app/feature/onboarding/ui/sign_in.dart';
 
 class CountryCodeDialog extends StatelessWidget {
@@ -61,10 +62,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String? phoneNumber;
   String? passWord;
 
+  bool isConfirmButtonPressed = false;
 
+  _loginAndMoveToDashboard() async {
+    //1. Change confirm text to spinner
 
+    setState(() {
+      isConfirmButtonPressed = true;
+    });
 
+    //2. Wait for 3 seconds
 
+    await Future.delayed(Duration(seconds: 3));
+    //3. Go to Dashboard
+    setState(() {
+      isConfirmButtonPressed = false;
+    });
+    Get.offAll(() => DashBoard());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,29 +236,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 SizedBox(height: 65),
                 GestureDetector(
-                  onTap: () {
-                    if (phoneNumber == null) {
-                      Get.snackbar(
-                        'Error',
-                        'Phone number is required',
-                        backgroundColor: Colors.red,
-                        colorText: Colors.white,
-                      );
-                      return;
-                    }
-                    if (passWord == null) {
-                      Get.snackbar(
-                        'Error',
-                        'Password is required',
-                        backgroundColor: Colors.red,
-                        colorText: Colors.white,
-                      );
-                      return;
-                    }
-
-                    log('Phonenumber is $countryCode$phoneNumber');
-                    log('Password is $passWord');
-                  },
+                  onTap: _loginAndMoveToDashboard,
                   child: Container(
                     width: 419,
                     height: 61,
@@ -252,12 +245,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: Color(0xff8497A5),
                     ),
                     alignment: Alignment.center,
-                    child: 
-                    
-                    Text(
-                      'Confirm',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
+                    child: isConfirmButtonPressed
+                        ? SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator.adaptive(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                            ),
+                          )
+                        : Text(
+                            'Confirm',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                   ),
                 ),
                 SizedBox(height: 45),
