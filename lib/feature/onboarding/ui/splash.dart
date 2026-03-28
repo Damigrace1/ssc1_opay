@@ -12,17 +12,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  navigateToSignUpPage() {
-    Get.to(()=> SignUpScreen());
-  }
 
-  moveToSignUpPage() {
-    Future.delayed(Duration(seconds: 3), navigateToSignUpPage);
-  }
-
+  
   @override
   void initState() {
-    moveToSignUpPage();
+    Future.delayed(Duration(seconds: 3), () {
+      Get.to(() => SignUpScreen());
+    });
     super.initState();
   }
 

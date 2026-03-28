@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_first_app/feature/home/components/appbar.dart';
+import 'package:my_first_app/feature/home/components/balance_card.dart';
 
 class DashBoard extends StatelessWidget {
-  const DashBoard({super.key});
+  DashBoard({super.key});
 
   final String customerName = 'Mariam';
+  String balance = '5,000,000';
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +18,7 @@ class DashBoard extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 32),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff67b778),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: EdgeInsets.all(20),
-            ),
+            BalanceCard(balance: balance),
           ],
         ),
       ),

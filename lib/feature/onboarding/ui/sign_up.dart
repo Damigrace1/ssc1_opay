@@ -1,10 +1,9 @@
-import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:my_first_app/feature/home/ui/dash_board.dart';
 import 'package:my_first_app/feature/onboarding/ui/sign_in.dart';
 
@@ -81,8 +80,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     Get.offAll(() => DashBoard());
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+    min(3,5);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -235,6 +238,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(height: 65),
+
                 GestureDetector(
                   onTap: _loginAndMoveToDashboard,
                   child: Container(
