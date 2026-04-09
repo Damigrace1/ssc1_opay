@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_first_app/feature/home/components/appbar.dart';
 import 'package:my_first_app/feature/home/components/balance_card.dart';
 import 'package:my_first_app/feature/home/components/bvnnin.dart';
+import 'package:my_first_app/feature/home/components/quick_actions.dart';
+import 'package:my_first_app/feature/home/components/savings_challenge.dart';
 import 'package:my_first_app/feature/home/components/transaction_tile.dart';
 import 'package:my_first_app/feature/home/components/transfer_card.dart';
 
@@ -17,7 +19,7 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(customerName),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
@@ -53,6 +55,11 @@ class DashBoard extends StatelessWidget {
             TransferCard(),
             SizedBox(height: 12),
             BNVNINWdget(primaryColor: primaryColor),
+            SizedBox(height: 12),
+            QuickActions(),
+            SizedBox(height: 12),
+            SavingsChallenge(),
+            SizedBox(height: 24),
           ],
         ),
       ),
