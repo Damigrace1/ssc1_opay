@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:my_first_app/feature/home/ui/dash_board.dart';
+import 'package:my_first_app/feature/home/ui/hometab.dart';
 import 'package:my_first_app/feature/onboarding/ui/sign_in.dart';
+import 'package:my_first_app/feature/shell.dart';
 
 class CountryCodeDialog extends StatelessWidget {
   CountryCodeDialog({super.key});
@@ -77,15 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       isConfirmButtonPressed = false;
     });
-    Get.offAll(() => DashBoard());
+    Get.offAll(() => Shell());
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
-    min(3,5);
+    min(3, 5);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

@@ -1,15 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_app/feature/home/components/go_button.dart';
 
 
 class BNVNINWdget extends StatelessWidget {
   const BNVNINWdget({
     super.key,
-    required this.primaryColor,
   });
 
-  final Color primaryColor;
 
 
   @override
@@ -36,18 +35,9 @@ class BNVNINWdget extends StatelessWidget {
           'Click to view more details',
           style: TextStyle(fontSize: 12, color: Colors.grey),
         ),
-        trailing: Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: primaryColor,
-          ),
-          child: Text(
-            'Go',
-            style: TextStyle(fontSize: 15, color: Colors.white),
-          ),
-        ),
+        trailing: GoButton(),
       ),
     );
   }
 }
+
